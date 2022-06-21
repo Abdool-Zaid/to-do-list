@@ -9,8 +9,14 @@
     --bg:#baca43;
     --sixty:#444a3f;
     --thirty:#8a7541;
-    --ten:#b6dfdf;
+    --ten:#6fffff;
 }
 body{
     background-color: var(--bg);
+}
+#target{
+   
+    background-color: var(--sixty);
+    color: var(--ten);
+    padding: var(--ss);
 }

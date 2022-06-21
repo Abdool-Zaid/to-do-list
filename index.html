@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="target">default</div>
+<form onsubmit="event.preventDefault()">
+    <label for="task"><h3>Task</h3></label>
+    <input type="text" id="taskInput" placeholder="Task name">
+    <label for="taskDescription"><h3>description</h3></label>
+    <input type="text" id="taskDescription" placeholder="Description">
+    <button onclick="addToTasks()">submit</button>
+</form>
 
-    
     <script src="script.js"></script>
 </body>
 </html>
