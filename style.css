@@ -5,6 +5,7 @@
 }
 :root{
     --ss:1%;
+    --st:1em;
     --sm:10vw;
     --bg:#baca43;
     --sixty:#444a3f;
@@ -15,8 +16,15 @@ body{
     background-color: var(--bg);
 }
 #target{
-   
-    background-color: var(--sixty);
-    color: var(--ten);
-    padding: var(--ss);
+   margin: var(--ss);
+   padding: var(--ss);
+}
+
+.taskItem{
+    margin: var(--ss);
+    padding-left: var(--st);
+    border-radius: 92px;
+    background: linear-gradient(145deg, #c7d848, #a7b63c);
+    box-shadow:  30px 30px 60px #848f30,
+                 -30px -30px 60px #f0ff56;
 }
