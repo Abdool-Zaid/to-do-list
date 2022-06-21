@@ -6,7 +6,10 @@
 :root{
     --ss:1%;
     --sm:10vw;
-    --bg:#a0b219;
+    --bg:#baca43;
+    --sixty:#444a3f;
+    --thirty:#8a7541;
+    --ten:#b6dfdf;
 }
 body{
     background-color: var(--bg);
