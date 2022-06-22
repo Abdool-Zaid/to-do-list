@@ -24,8 +24,11 @@ addToTasks = () =>{
         description:TaskDescription},)
         console.log("entry successful")
         display()
-    
-}
-searchTasks=() =>{
-    
+        
+    }
+    searchTasks=() =>{
+        let FindTask= document.querySelector("#SecondR").value
+       let SearchResult= tasks.find( tasks=> tasks.name===FindTask); 
+
+     console.log(SearchResult)
 }
