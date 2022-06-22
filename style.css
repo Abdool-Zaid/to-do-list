@@ -7,6 +7,7 @@
     --ss:1%;
     --st:1em;
     --sm:10vw;
+    --sb:2em;
     --bg:#baca43;
     --sixty:#444a3f;
     --thirty:#8a7541;
@@ -22,7 +23,7 @@ body{
 
 .taskItem{
     margin: var(--ss);
-    padding-left: var(--st);
+    padding: var(--sb);
     border-radius: 92px;
     background: linear-gradient(145deg, #c7d848, #a7b63c);
     box-shadow:  30px 30px 60px #848f30,
