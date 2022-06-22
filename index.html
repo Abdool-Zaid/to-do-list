@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <form onsubmit="event.preventDefault()">
+    <input type="text" id="SecondR">
+    <button type="submit" onclick="searchTasks()">Search for task</button>
+    </form>
     <div id="target">default</div>
 <form onsubmit="event.preventDefault()">
     <label for="task"><h3>Task</h3></label>
