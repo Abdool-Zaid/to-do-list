@@ -16,8 +16,8 @@ const tasks = [
 display = () => {
   document.querySelector("#target").innerHTML = "";
   tasks.forEach((task) => {
-      document.querySelector("#target").innerHTML += `
-      <div class="taskItem">
+    document.querySelector("#target").innerHTML += `
+    <div class="taskItem" ondblclick="reviewTask()">
       <p>${task.id}</p>
       <h3>${task.name}</h3>
       <p>${task.description}</p>
@@ -26,24 +26,42 @@ display = () => {
       </div>
       `;
     });
-};
-display();
-addToTasks = () => {
+  };
+  display();
+  addToTasks = () => {
     let TaskStatus = document.querySelector("#TaskStatus").value;
     let TaskName = document.querySelector("#taskInput").value;
     let TaskDescription = document.querySelector("#taskDescription").value;
     if(TaskName==""||TaskStatus==""){
-    alert("blank entry detected")
+      alert("blank entry detected")
     }
     else{
       tasks.push({ id:tasks.length+1 ,name: TaskName, description: TaskDescription, createdDate: today, status:TaskStatus  });
       console.log("entry successful");
     }
-  display();
+    display();
+  };
+  searchTasks = () => {
+    let FindTask = document.querySelector("#SecondR").value;
+    let SearchResult = tasks.find((tasks) => tasks.name === FindTask);
+    console.log(SearchResult);
+    document.querySelector("#target").innerHTML = "";
+    document.querySelector("#target").innerHTML =`
+    <div class="searchItem" ondblclick="reviewTask()">
+      <p>${SearchResult.id}</p>
+      <h3>${SearchResult.name}</h3>
+      <p>${SearchResult.description}</p>
+      <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
+      <p dir="rtl" class="subInfo">${SearchResult.status}</p>
+      </div>
+  
+    `;
 };
-searchTasks = () => {
-  let FindTask = document.querySelector("#SecondR").value;
-  let SearchResult = tasks.find((tasks) => tasks.name === FindTask);
 
-  console.log(SearchResult);
-};
+editTasks=()=>{
+alert("alert")
+}
+
+reviewTask=()=>{
+alert("review")
+}
