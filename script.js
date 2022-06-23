@@ -35,15 +35,20 @@ display = () => {
     document.querySelector("#target").innerHTML += `
         <div class="taskItem"  ondblclick="reviewTask(this)"  >
         <p>${task.id}</p>
-        <input type="checkbox" name="checkbox" id="checkbox">
+        <input type="checkbox" name="checkbox" class="checkbox">
         <label for="taskInput">
         <h3 id="h3">${task.name}</h3>
         <p>${task.description}</p>
         </label>
+        <div id="deleteitem"></div>
         <p dir="rtl" class="subInfo">${task.status}</p>
-        <button onclick="deleteTask()">delete</button>
+       
         </div>
         `;
+        document.querySelector('.taskItem').addEventListener("mouseover",function (){
+            document.querySelector('#deleteitem').innerHTML=` <button type="button" id="${task.id}">delete</button>`});
+            document.querySelector('.taskItem').addEventListener("mouseout",function (){
+              document.querySelector('#deleteitem').innerHTML=` `});
   });
 };
 display();
@@ -86,7 +91,7 @@ searchTasks = () => {
       <p>${SearchResult.description}</p>
       <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
       <p dir="rtl" class="subInfo">${SearchResult.status}</p>
-    //   <button onclick="deleteTask()">delete</button>
+
       </div>
   
     `;
