@@ -19,7 +19,7 @@ const tasks = JSON.parse(localStorage.getItem("tasks"))
         name: "Yes, yes! I can do it! I'll fix my life's clock!",
         description:
           "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-            status: "need to do",
+        status: "need to do",
       },
     ];
 
@@ -35,9 +35,11 @@ display = () => {
     document.querySelector("#target").innerHTML += `
         <div class="taskItem"  ondblclick="reviewTask(this)"  >
         <p>${task.id}</p>
-        <h3>${task.name}</h3>
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label for="taskInput">
+        <h3 id="h3">${task.name}</h3>
         <p>${task.description}</p>
-        <p dir="rtl" class="subInfo">${task.createdDate}</p>
+        </label>
         <p dir="rtl" class="subInfo">${task.status}</p>
         <button onclick="deleteTask()">delete</button>
         </div>
@@ -56,7 +58,7 @@ addToTasks = () => {
       id: tasks.length + 1,
       name: TaskName,
       description: TaskDescription,
-        status: TaskStatus,
+      status: TaskStatus,
     });
     localStorage.getItem(tasks)
       ? console.log("in memory")
@@ -99,9 +101,9 @@ reviewTask = (caller) => {
   console.log("area element id = " + target);
 };
 
-deleteTask=()=>{
-    tasks.splice(id, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    display();
-  console.log("read =true")
-}
+deleteTask = () => {
+  tasks.splice(id, 1);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  display();
+  console.log("read =true");
+};

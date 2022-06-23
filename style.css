@@ -47,3 +47,6 @@
   .searchItem .subInfo {
     color: var(--sixty);
   }
+  input:checked + label {
+    text-decoration: line-through;
+  }
