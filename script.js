@@ -1,31 +1,27 @@
 console.log("active");
-let today = new Date().toLocaleString(undefined, {
-  month: "numeric",
-  day: "numeric",
-});
-const tasks =  [
-  {
-    id: 1,
-    name: "Yes, yes! I can do it! I'll fix my life's clock!",
-    description:
-      "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-    createdDate: today,
-    status: "need to do",
-  },
-];
 
-// const tasks = JSON.parse(localStorage.getItem("tasks"))
-//   ? JSON.parse(localStorage.getItem("tasks"))
-//   : [
-//       {
-//         id: 1,
-//         name: "Yes, yes! I can do it! I'll fix my life's clock!",
-//         description:
-//           "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-//         createdDate: today,
-//         status: "need to do",
-//       },
-//     ];
+// const tasks =  [
+//   {
+//     id: 1,
+//     name: "Yes, yes! I can do it! I'll fix my life's clock!",
+//     description:
+//       "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+//     createdDate: today,
+//     status: "need to do",
+//   },
+// ];
+
+const tasks = JSON.parse(localStorage.getItem("tasks"))
+  ? JSON.parse(localStorage.getItem("tasks"))
+  : [
+      {
+        id: 1,
+        name: "Yes, yes! I can do it! I'll fix my life's clock!",
+        description:
+          "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+            status: "need to do",
+      },
+    ];
 
 resetTasks = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -43,6 +39,7 @@ display = () => {
         <p>${task.description}</p>
         <p dir="rtl" class="subInfo">${task.createdDate}</p>
         <p dir="rtl" class="subInfo">${task.status}</p>
+        <button onclick="deleteTask()">delete</button>
         </div>
         `;
   });
@@ -59,8 +56,7 @@ addToTasks = () => {
       id: tasks.length + 1,
       name: TaskName,
       description: TaskDescription,
-      createdDate: today,
-      status: TaskStatus,
+        status: TaskStatus,
     });
     localStorage.getItem(tasks)
       ? console.log("in memory")
@@ -88,7 +84,7 @@ searchTasks = () => {
       <p>${SearchResult.description}</p>
       <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
       <p dir="rtl" class="subInfo">${SearchResult.status}</p>
-      <button onclick="deleteTask()">delete</button>
+    //   <button onclick="deleteTask()">delete</button>
       </div>
   
     `;
@@ -102,3 +98,10 @@ reviewTask = (caller) => {
   let target = caller.id;
   console.log("area element id = " + target);
 };
+
+deleteTask=()=>{
+    tasks.splice(id, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    display();
+  console.log("read =true")
+}
