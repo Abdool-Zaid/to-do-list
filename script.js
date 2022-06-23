@@ -57,11 +57,13 @@ addToTasks = () => {
 
     console.log("entry successful");
   }
+
   display();
-  clearTasks = () => {
+};
+clearTasks = () => {
     localStorage.clear();
     console.log(localStorage);
-  };
+    resetTasks() 
 };
 searchTasks = () => {
   let FindTask = document.querySelector("#SecondR").value;
