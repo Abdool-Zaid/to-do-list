@@ -27,8 +27,8 @@ resetTasks = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   window.location.reload();
 };
-    
-    display = () => {
+
+display = () => {
       let retrievedTask = localStorage.getItem("tasks");
       document.querySelector("#target").innerHTML = "";
       JSON.parse(retrievedTask).forEach((task) => {
@@ -103,24 +103,26 @@ resetTasks = () => {
         
         reviewTask = (caller) => {
           // use search function to select task
-    let target = caller.id;
-    console.log("area element id = " + target);
-  };
-  
-  // document.querySelector('.taskItem').addEventListener("dblclick",function (){ console.log(tasks.length)});
-  
-  // deleteTask = () => {
-    //   tasks.splice(id, 1);
-    //   localStorage.setItem("tasks", JSON.stringify(tasks));
-    //   display();
-    //   console.log("read =true");
-    // };
-    deleteItem=()=>{
-      let rawText =document.querySelector('.searchItem').textContent;
-       let id =JSON.parse(rawText.split(' ').slice(10,11))-1
-       
-       console.log(id)
-       tasks.splice(Index, id);
-      console.log("removal=complete")
-    }
-    
+          let target = caller.id;
+          console.log("area element id = " + target);
+        };
+        
+        // document.querySelector('.taskItem').addEventListener("dblclick",function (){ console.log(tasks.length)});
+        
+        // deleteTask = () => {
+          //   tasks.splice(id, 1);
+          //   localStorage.setItem("tasks", JSON.stringify(tasks));
+          //   display();
+          //   console.log("read =true");
+          // };
+          deleteItem=()=>{
+            let rawText =document.querySelector('.searchItem').textContent;
+            let id =JSON.parse(rawText.split(' ').slice(10,11))-1
+            
+            console.log(id)
+            tasks.splice([], id);
+            console.log(tasks.length);
+            window.location.reload();
+            console.log("removal=complete")
+          }
+          
