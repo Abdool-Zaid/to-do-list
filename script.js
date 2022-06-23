@@ -26,7 +26,7 @@ display = () => {
   document.querySelector("#target").innerHTML = "";
   JSON.parse(retrievedTask).forEach((task) => {
     document.querySelector("#target").innerHTML += `
-        <div class="taskItem"  ondblclick="reviewTask()"  >
+        <div class="taskItem"  ondblclick="reviewTask(this)"  >
         <p>${task.id}</p>
         <h3>${task.name}</h3>
         <p>${task.description}</p>
@@ -71,7 +71,7 @@ searchTasks = () => {
   console.log(SearchResult);
   document.querySelector("#target").innerHTML = "";
   document.querySelector("#target").innerHTML = `
-    <div class="searchItem" ondblclick="reviewTask()">
+    <div class="searchItem" ondblclick="reviewTask(this)">
       <p>${SearchResult.id}</p>
       <h3>${SearchResult.name}</h3>
       <p>${SearchResult.description}</p>
@@ -86,6 +86,7 @@ editTasks = () => {
   alert("alert");
 };
 
-reviewTask = () => {
-  alert("review");
+reviewTask = (caller) => {
+  let target= caller.id ;
+  console.log('area element id = ' + target)
 };
