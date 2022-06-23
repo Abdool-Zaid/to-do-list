@@ -88,6 +88,7 @@ searchTasks = () => {
       <p>${SearchResult.description}</p>
       <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
       <p dir="rtl" class="subInfo">${SearchResult.status}</p>
+      <button onclick="deleteTask()">delete</button>
       </div>
   
     `;
