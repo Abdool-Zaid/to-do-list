@@ -1,6 +1,7 @@
 console.log("active");
-let today=new Date().toLocaleString(undefined, {
-    month: "numeric", day: "numeric", 
+let today = new Date().toLocaleString(undefined, {
+  month: "numeric",
+  day: "numeric",
 });
 const tasks = [
   {
@@ -8,16 +9,18 @@ const tasks = [
     name: "Yes, yes! I can do it! I'll fix my life's clock!",
     description:
       "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-      createdDate: today,
-      status: "need to do",
+    createdDate: today,
+    status: "need to do",
   },
 ];
 
 display = () => {
-    
+    let retrievedTask = localStorage.getItem("tasks");
+    console.log("retrievedTask: ", JSON.parse(retrievedTask));
     document.querySelector("#target").innerHTML = "";
-    tasks.forEach((task) => {
-        document.querySelector("#target").innerHTML += `
+    console.log('display=true')
+    JSON.parse(retrievedTask).forEach((task) => {
+    document.querySelector("#target").innerHTML += `
         <div class="taskItem"  ondblclick="reviewTask()"  >
         <p>${task.id}</p>
         <h3>${task.name}</h3>
@@ -25,34 +28,42 @@ display = () => {
         <p dir="rtl" class="subInfo">${task.createdDate}</p>
         <p dir="rtl" class="subInfo">${task.status}</p>
         </div>
-        `; 
-    });
+        `;
+  });
 };
 display();
 addToTasks = () => {
-    let TaskStatus = document.querySelector("#TaskStatus").value;
-    let TaskName = document.querySelector("#taskInput").value;
-    let TaskDescription = document.querySelector("#taskDescription").value;
-    if(TaskName==""){
-        alert("blank entry detected")
-    }
-    else{
-        tasks.push({ id:tasks.length+1 ,name: TaskName, description: TaskDescription, createdDate: today, status:TaskStatus  });
-        console.log("entry successful");
-        //  if item exists do nothing else add to storage
-        localStorage.getItem(tasks)?console.log("in memory"):localStorage.setItem("tasks", tasks);
-    }
-    display();
-    clearTasks=()=>{    
+  let TaskStatus = document.querySelector("#TaskStatus").value;
+  let TaskName = document.querySelector("#taskInput").value;
+  let TaskDescription = document.querySelector("#taskDescription").value;
+  if (TaskName == "") {
+    alert("blank entry detected");
+  } else {
+    tasks.push({
+      id: tasks.length + 1,
+      name: TaskName,
+      description: TaskDescription,
+      createdDate: today,
+      status: TaskStatus,
+    });
+    console.log("entry successful");
+    localStorage.getItem(tasks)
+      ? console.log("in memory")
+      : localStorage.setItem("tasks", JSON.stringify(tasks));
 
-    }
+  }
+  display();
+  clearTasks = () => {
+    localStorage.clear();
+    console.log(localStorage);
+  };
 };
 searchTasks = () => {
-    let FindTask = document.querySelector("#SecondR").value;
-    let SearchResult = tasks.find((tasks) => tasks.name === FindTask);
-    console.log(SearchResult);
-    document.querySelector("#target").innerHTML = "";
-    document.querySelector("#target").innerHTML =`
+  let FindTask = document.querySelector("#SecondR").value;
+  let SearchResult = tasks.find((tasks) => tasks.name === FindTask);
+  console.log(SearchResult);
+  document.querySelector("#target").innerHTML = "";
+  document.querySelector("#target").innerHTML = `
     <div class="searchItem" ondblclick="reviewTask()">
       <p>${SearchResult.id}</p>
       <h3>${SearchResult.name}</h3>
@@ -64,10 +75,10 @@ searchTasks = () => {
     `;
 };
 
-editTasks=()=>{
-    alert("alert")
-    }
-    
-    reviewTask=()=>{
-    alert("review")
-    }
+editTasks = () => {
+  alert("alert");
+};
+
+reviewTask = () => {
+  alert("review");
+};
