@@ -7,7 +7,7 @@
     <title>TO Do List</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body  oncontextmenu="event.preventDefault(); editTasks()" >
     <form onsubmit="event.preventDefault()">
     <input type="text" id="SecondR">
     <button type="submit" onclick="searchTasks()">Search for task</button>

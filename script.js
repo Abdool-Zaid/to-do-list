@@ -18,7 +18,7 @@ display = () => {
     document.querySelector("#target").innerHTML = "";
     tasks.forEach((task) => {
         document.querySelector("#target").innerHTML += `
-        <div class="taskItem">
+        <div class="taskItem"  ondblclick="reviewTask()"  >
         <p>${task.id}</p>
         <h3>${task.name}</h3>
         <p>${task.description}</p>
@@ -50,6 +50,24 @@ addToTasks = () => {
 searchTasks = () => {
     let FindTask = document.querySelector("#SecondR").value;
     let SearchResult = tasks.find((tasks) => tasks.name === FindTask);
-    display(SearchResult);
     console.log(SearchResult);
+    document.querySelector("#target").innerHTML = "";
+    document.querySelector("#target").innerHTML =`
+    <div class="searchItem" ondblclick="reviewTask()">
+      <p>${SearchResult.id}</p>
+      <h3>${SearchResult.name}</h3>
+      <p>${SearchResult.description}</p>
+      <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
+      <p dir="rtl" class="subInfo">${SearchResult.status}</p>
+      </div>
+  
+    `;
 };
+
+editTasks=()=>{
+    alert("alert")
+    }
+    
+    reviewTask=()=>{
+    alert("review")
+    }
