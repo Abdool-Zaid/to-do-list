@@ -3,7 +3,7 @@ let today = new Date().toLocaleString(undefined, {
   month: "numeric",
   day: "numeric",
 });
-const tasks = [
+const tasks =  [
   {
     id: 1,
     name: "Yes, yes! I can do it! I'll fix my life's clock!",
@@ -13,12 +13,23 @@ const tasks = [
     status: "need to do",
   },
 ];
-// localStorage.length < 1?document.querySelector("#target").innerHTML += `<button onclick="resetTasks()">reset</button>`:console.log("primed");
+
+// const tasks = JSON.parse(localStorage.getItem("tasks"))
+//   ? JSON.parse(localStorage.getItem("tasks"))
+//   : [
+//       {
+//         id: 1,
+//         name: "Yes, yes! I can do it! I'll fix my life's clock!",
+//         description:
+//           "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+//         createdDate: today,
+//         status: "need to do",
+//       },
+//     ];
 
 resetTasks = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   window.location.reload();
-
 };
 
 display = () => {
@@ -61,9 +72,9 @@ addToTasks = () => {
   display();
 };
 clearTasks = () => {
-    localStorage.clear();
-    console.log(localStorage);
-    resetTasks() 
+  localStorage.clear();
+  console.log(localStorage);
+  resetTasks();
 };
 searchTasks = () => {
   let FindTask = document.querySelector("#SecondR").value;
@@ -87,6 +98,6 @@ editTasks = () => {
 };
 
 reviewTask = (caller) => {
-  let target= caller.id ;
-  console.log('area element id = ' + target)
+  let target = caller.id;
+  console.log("area element id = " + target);
 };
