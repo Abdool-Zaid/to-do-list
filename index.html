@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TO Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body  oncontextmenu="event.preventDefault(); editTasks()" >
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body oncontextmenu="event.preventDefault(); editTasks()">
     <form onsubmit="event.preventDefault()">
-    <input type="text" id="SecondR">
-    <button type="submit" onclick="searchTasks()">Search for task</button>
+      <input type="text" id="SecondR" />
+      <button type="submit" onclick="searchTasks()">Search for task</button>
     </form>
     <div id="target">default</div>
-<form onsubmit="event.preventDefault()">
-    <label for="task"><h3>Task</h3></label>
-    <input type="text" id="taskInput" placeholder="Task name" >
-    <label for="taskDescription"><h3>description</h3></label>
-    <input type="text" id="taskDescription" placeholder="Description">
-    <select name="status" id="TaskStatus">
+    <form onsubmit="event.preventDefault()">
+      <label for="task"><h3>Task</h3></label>
+      <input type="text" id="taskInput" placeholder="Task name" />
+      <label for="taskDescription"><h3>description</h3></label>
+      <input type="text" id="taskDescription" placeholder="Description" />
+      <select name="status" id="TaskStatus">
         <option value="need to do">need to do</option>
         <option value="in progress">in progress</option>
         <option value="completed">completed</option>
-    </select>
-   
-    <button onclick="addToTasks()">submit</button>
-    <button onclick="clearTasks()">clear all</button>
-</form>
+      </select>
+
+      <button onclick="addToTasks()">submit</button>
+      <button onclick="resetTasks()">reset</button>
+      <button onclick="clearTasks()">clear all</button>
+    </form>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
