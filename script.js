@@ -46,12 +46,12 @@ display = () => {
         </div>
         `;
         document.querySelector('.taskItem').addEventListener("mouseover",function (){
-            document.querySelector('#deleteitem').innerHTML=` <button type="button" id="${task.id}">delete</button>`});
+            document.querySelector('#deleteitem').innerHTML=` <button type="button" onclick="deleteItem()" id="${task.id}">delete</button>`});
             document.querySelector('.taskItem').addEventListener("mouseout",function (){
               document.querySelector('#deleteitem').innerHTML=` `});
   });
 };
-display();
+display();  
 addToTasks = () => {
   let TaskStatus = document.querySelector("#TaskStatus").value;
   let TaskName = document.querySelector("#taskInput").value;
@@ -106,9 +106,14 @@ reviewTask = (caller) => {
   console.log("area element id = " + target);
 };
 
-deleteTask = () => {
-  tasks.splice(id, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  display();
-  console.log("read =true");
-};
+// deleteTask = () => {
+//   tasks.splice(id, 1);
+//   localStorage.setItem("tasks", JSON.stringify(tasks));
+//   display();
+//   console.log("read =true");
+// };
+deleteItem=()=>{
+
+
+  console.log("removal=complete")
+}
