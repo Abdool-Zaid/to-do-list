@@ -1,28 +1,32 @@
 console.log("active");
 
 // const tasks =  [
-//   {
-//     id: 1,
-//     name: "Yes, yes! I can do it! I'll fix my life's clock!",
-//     description:
-//       "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-//     createdDate: today,
+  //   {
+    //     id: 1,
+    //     name: "Yes, yes! I can do it! I'll fix my life's clock!",
+    //     description:
+    //       "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+    //     createdDate: today,
 //     status: "need to do",
 //   },
 // ];
 
 const tasks = JSON.parse(localStorage.getItem("tasks"))
-  ? JSON.parse(localStorage.getItem("tasks"))
-  : [
-      {
-        id: 1,
-        name: "Yes, yes! I can do it! I'll fix my life's clock!",
-        description:
-          "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
-        status: "need to do",
-      },
-    ];
+? JSON.parse(localStorage.getItem("tasks"))
+: [
+  {
+    id: 1,
+    name: "Yes, yes! I can do it! I'll fix my life's clock!",
+    description:
+    "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+    status: "need to do",
+  },
+];
 
+resetTasks = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  window.location.reload();
+};
     
     display = () => {
       let retrievedTask = localStorage.getItem("tasks");
@@ -36,7 +40,6 @@ const tasks = JSON.parse(localStorage.getItem("tasks"))
         <h3 id="h3">${task.name}</h3>
         <p>${task.description}</p>
         </label>
-        <div id="deleteitem"></div>
         <p dir="rtl" class="subInfo">${task.status}</p>
         
         </div>
@@ -85,8 +88,9 @@ const tasks = JSON.parse(localStorage.getItem("tasks"))
           <p>${SearchResult.id}</p>
           <h3>${SearchResult.name}</h3>
           <p>${SearchResult.description}</p>
-          <p dir="rtl" class="subInfo">${SearchResult.createdDate}</p>
           <p dir="rtl" class="subInfo">${SearchResult.status}</p>
+          <button onclick="deleteItem()">delete task</button>
+          
           
           </div>
           
@@ -95,10 +99,10 @@ const tasks = JSON.parse(localStorage.getItem("tasks"))
         
         editTasks = () => {
           alert("alert");
-};
-
-reviewTask = (caller) => {
-  // use search function to select task
+        };
+        
+        reviewTask = (caller) => {
+          // use search function to select task
     let target = caller.id;
     console.log("area element id = " + target);
   };
@@ -112,12 +116,11 @@ reviewTask = (caller) => {
     //   console.log("read =true");
     // };
     deleteItem=()=>{
-      
-      
+      let rawText =document.querySelector('.searchItem').textContent;
+       let id =JSON.parse(rawText.split(' ').slice(10,11))-1
+       
+       console.log(id)
+       tasks.splice(Index, id);
       console.log("removal=complete")
     }
     
-    resetTasks = () => {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      window.location.reload();
-    };
