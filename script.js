@@ -30,8 +30,26 @@ addToTasks = () => {
     window.location.reload();
   }
 };
-// read all
-// sort by status
+
+SortBy=()=>{
+  let RetrievedTaskArray = JSON.parse(localStorage.getItem("list"));
+  console.log(RetrievedTaskArray)
+
+for (let i = 0; i <= RetrievedTaskArray.length; i++){
+
+  if (document.querySelector('#selectType').value=RetrievedTaskArray[i].status){
+    console.log('yay')
+    
+  }
+  else{
+    console.log('meow')
+  }
+}
+  
+}
+
+
+
 display = () => {
   document.querySelector("#target").innerHTML = "";
   let RetrievedTaskArray = JSON.parse(localStorage.getItem("list"));
