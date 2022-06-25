@@ -113,43 +113,47 @@ searchTasks = () => {
         // update
         editItem=()=>{
           let values= JSON.parse(sessionStorage.getItem('itemToBeEdited'))
-          console.log(values.index)
-          console.log(values.name)
-          console.log(values.description)
-          console.log('editted')
+         
           // 1 change innerhtml to update form
           document.querySelector(".searchItem").innerHTML = "";
           document.querySelector(".searchItem").innerHTML = `
           <div id="editItem">
           <form onsubmit="event.preventDefault()">
-            <input type="text" id="subjectName" value="${values.name}" />
-            <input type="text" id="taskDescription" value="${values.description}"/>
-            <select name="status" id="TaskStatus">
-              <option value="need to do">need to do</option>
-              <option value="in progress">in progress</option>
-              <option value="completed">completed</option>
-            </select>
-            <button onclick="updateTask()">Update</button>
+          <input type="text" id="subjectName" value="${values.name}" />
+          <input type="text" id="taskDescription" value="${values.description}"/>
+          <select name="status" id="TaskStatus">
+          <option value="need to do">need to do</option>
+          <option value="in progress">in progress</option>
+          <option value="completed">completed</option>
+          </select>
+          <button onclick="updateTask()">Update</button>
           </form>
-        </div>
-                  `;
-  // 3 set array object as new data
-  updateTask=()=>{
-    JSON.parse(localStorage.getItem("list"));
-   let target = list [values.index]
-   let name= document.querySelector('#subjectName').value
-   let description= document.querySelector('#taskDescription').value
-   let status= document.querySelector('#taskStatus').value
-    console.log('updated')
-  }
- 
-  // 4 rerun search to show changes
-  
-  
-
-  
-}
-
+          </div>
+          `;
+          // 3 set array object as new data
+          updateTask=()=>{
+             JSON.parse(localStorage.getItem("list"));
+            let target = list[values.index]
+            let name= document.querySelector('#subjectName').value
+            let description= document.querySelector('#taskDescription').value
+            let status= document.querySelector('#TaskStatus').value
+          // target.name
+          target.name = name;
+          target.description= description;
+          target.status=status;
+          console.log(list)
+          localStorage.setItem('list',JSON.stringify(list))
+            console.log('updated')
+            window.location.reload();
+          }
+          
+        
+          
+          
+          console.log('editted')
+          
+        }
+        
 
 
 // update all
