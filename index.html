@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body">
-  <form onsubmit="event.preventDefault()" autocomplete="off">
+  <form onsubmit="event.preventDefault()" >
     <input type="text" id="SecondR" />
     <select name="status" id="selectType">
       <option value="all">all</option>
@@ -16,7 +16,7 @@
       <option value="in progress">in progress</option>
       <option value="completed">completed</option>
     </select>
-    <button type="submit">Search for task</button>
+    <button type="submit" onclick="searchTasks()">Search for task</button>
   </form>
   <div id="target">default</div>
   <form onsubmit="event.preventDefault()" >

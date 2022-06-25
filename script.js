@@ -40,6 +40,11 @@ addToTasks = () => {
 
 // read all
 // sort by status
+
+
+
+
+
 display = () => {
   document.querySelector("#target").innerHTML = "";
   let RetrievedTaskArray = JSON.parse(localStorage.getItem("list"));
@@ -63,26 +68,52 @@ display = () => {
   let retrievedTask = localStorage.getItem("list");
   JSON.parse(retrievedTask).forEach((task) => {
     document.querySelector("#target").innerHTML += `
-        <div class="taskItem"   >
-        <p>${task.id}</p>
-        <input type="checkbox" name="checkbox" class="checkbox">
-        <label for="taskInput">
-        <h3 id="h3">${task.name}</h3>
-        <p>${task.description}</p>
-        </label>
-        <p dir="rtl" class="subInfo">${task.status}</p>
-        </div>
-        `;
+    <div class="taskItem"   >
+    <p>${task.id}</p>
+    <input type="checkbox" name="checkbox" class="checkbox">
+    <label for="taskInput">
+    <h3 id="h3">${task.name}</h3>
+    <p>${task.description}</p>
+    </label>
+    <p dir="rtl" class="subInfo">${task.status}</p>
+    </div>
+    `;
   });
-
+  
   // }
   // };
 };
 display();
 
 // read one
+searchTasks = () => {
+  let FindTask = document.querySelector("#SecondR").value.toLowerCase();
+  let SearchResult = list.find((list) => list.name === FindTask);
+  console.log(SearchResult);
+  document.querySelector("#target").innerHTML = "";
+  document.querySelector("#target").innerHTML = `
+  <div class="searchItem" >
+  <p class='id'>${SearchResult.id}</p>
+  <input type="checkbox" name="checkbox" class="checkbox">
+  <label for="taskInput">
+  <h3>${SearchResult.name}</h3>
+  <p>${SearchResult.description}</p>
+  </label>
+          <p dir="rtl" class="subInfo">${SearchResult.status}</p>
+          <button onclick="editItem()">edit</button>
+          <button onclick="deleteOne()">delete</button>
+
+          </div>
+
+          `;
+};
 
 // update
+editItem=()=>{
+console.log('edit')
+}
+
+
 
 // update all
 // remove completed list
@@ -104,8 +135,21 @@ RemoveFinal = () => {
 };
 // delete
 // deleted all selected(sorted)
+deleteOne=()=>{
+  JSON.parse(localStorage.getItem("list"));
+  console.log(list);
+  list.splice((document.querySelector('.id').innerText-1),1);
+  let Newlist = list;
+  console.log(Newlist);
 
-// delete first
+  localStorage.setItem("list", JSON.stringify(Newlist));
+  console.log(list);
+
+  document.querySelector("#target").innerHTML = "";
+  console.log("removed last item");
+  display();
+}
+delete first
 
 DeleteFirstTask= () => {
   JSON.parse(localStorage.getItem("list"));
@@ -148,23 +192,6 @@ DeleteFirstTask= () => {
 //   localStorage.length=0;
 //   console.log(localStorage);
 //   resetTasks();
-// };
-// searchTasks = () => {
-//   let FindTask = document.querySelector("#SecondR").value.toLowerCase();
-//   let SearchResult = list.find((list) => list.name === FindTask);
-//   console.log(SearchResult);
-//   document.querySelector("#target").innerHTML = "";
-//   document.querySelector("#target").innerHTML = `
-//           <div class="searchItem" >
-//           <p>${SearchResult.id}</p>
-//           <h3>${SearchResult.name}</h3>
-//           <p>${SearchResult.description}</p>
-//           <p dir="rtl" class="subInfo">${SearchResult.status}</p>
-//           <button onclick="deleteItem()">delete task</button>
-
-//           </div>
-
-//           `;
 // };
 
 // editTasks = () => {
