@@ -7,17 +7,17 @@ const list = JSON.parse(localStorage.getItem("list"))
         id: 1,
         name: "Yes, yes! I can do it! I'll fix my life's clock!",
         description:
-        "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
+          "My children called me dad. My wife call me Milien but from now on the world will come to know me as.... Nox",
         status: "need to do",
       },
     ];
-    
-    resetTasks = () => {
-      localStorage.setItem("list", JSON.stringify(list));
-      window.location.reload();
-    };
-    
-    addToTasks = () => {
+
+resetTasks = () => {
+  localStorage.setItem("list", JSON.stringify(list));
+  window.location.reload();
+};
+
+addToTasks = () => {
   let TaskStatus = document.querySelector("#TaskStatus").value;
   let TaskName = document.querySelector("#taskInput").value;
   let TaskDescription = document.querySelector("#taskDescription").value;
@@ -32,7 +32,7 @@ const list = JSON.parse(localStorage.getItem("list"))
     });
 
     localStorage.setItem("list", JSON.stringify(list));
-    
+
     window.location.reload();
     console.log("entry successful");
   }
@@ -43,12 +43,12 @@ const list = JSON.parse(localStorage.getItem("list"))
 display = () => {
   document.querySelector("#target").innerHTML = "";
   let RetrievedTaskArray = JSON.parse(localStorage.getItem("list"));
-  
+
   // display
   // if (listed list.status = "selected status"?display from index 1:display index o)
   // let selectionStatus = document.querySelector("#selectType").value;
   // for (let i = 0; i < RetrievedTaskArray.length; i++) {
-    //   //
+  //   //
   //   if (selectionStatus =RetrievedTaskArray.status){
 
   //     document.querySelector("#target").innerHTML += `
@@ -60,9 +60,9 @@ display = () => {
   //   }
   // else{
 
-    let retrievedTask = localStorage.getItem("list");
-    JSON.parse(retrievedTask).forEach((task) => {
-      document.querySelector("#target").innerHTML += `
+  let retrievedTask = localStorage.getItem("list");
+  JSON.parse(retrievedTask).forEach((task) => {
+    document.querySelector("#target").innerHTML += `
         <div class="taskItem"   >
         <p>${task.id}</p>
         <input type="checkbox" name="checkbox" class="checkbox">
@@ -73,11 +73,11 @@ display = () => {
         <p dir="rtl" class="subInfo">${task.status}</p>
         </div>
         `;
-      });
-      
-      // }
-      // };
-    };
+  });
+
+  // }
+  // };
+};
 display();
 
 // read one
@@ -91,32 +91,46 @@ display();
 RemoveFinal = () => {
   JSON.parse(localStorage.getItem("list"));
   console.log(list);
-  list.pop()
-  let Newlist = list; 
+  list.pop();
+  let Newlist = list;
   console.log(Newlist);
-  
+
   localStorage.setItem("list", JSON.stringify(Newlist));
   console.log(list);
-  
+
   document.querySelector("#target").innerHTML = "";
-console.log("removed last item");
-display();
-// window.location.reload();
+  console.log("removed last item");
+  display();
 };
 // delete
 // deleted all selected(sorted)
 
 // delete first
 
+DeleteFirstTask= () => {
+  JSON.parse(localStorage.getItem("list"));
+  console.log(list);
+  list.shift();
+  let Newlist = list;
+  console.log(Newlist);
+
+  localStorage.setItem("list", JSON.stringify(Newlist));
+  console.log(list);
+
+  document.querySelector("#target").innerHTML = "";
+  console.log("removed last item");
+  display();
+};
+
 // addToTasks = () => {
-  //   let TaskStatus = document.querySelector("#TaskStatus").value;
-  //   let TaskName = document.querySelector("#taskInput").value;
-  //   let TaskDescription = document.querySelector("#taskDescription").value;
-  //   if (TaskName == "") {
-    //     alert("blank entry detected");
-    //   } else {
+//   let TaskStatus = document.querySelector("#TaskStatus").value;
+//   let TaskName = document.querySelector("#taskInput").value;
+//   let TaskDescription = document.querySelector("#taskDescription").value;
+//   if (TaskName == "") {
+//     alert("blank entry detected");
+//   } else {
 //     list.push({
-  //       id: list.length + 1,
+//       id: list.length + 1,
 //       name: TaskName,
 //       description: TaskDescription,
 //       status: TaskStatus,
