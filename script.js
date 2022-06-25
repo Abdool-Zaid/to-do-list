@@ -79,9 +79,7 @@ display = () => {
     </div>
     `;
   });
-  
-  // }
-  // };
+
 };
 display();
 
@@ -113,8 +111,7 @@ searchTasks = () => {
         // update
         editItem=()=>{
           let values= JSON.parse(sessionStorage.getItem('itemToBeEdited'))
-         
-          // 1 change innerhtml to update form
+  
           document.querySelector(".searchItem").innerHTML = "";
           document.querySelector(".searchItem").innerHTML = `
           <div id="editItem">
@@ -130,14 +127,14 @@ searchTasks = () => {
           </form>
           </div>
           `;
-          // 3 set array object as new data
+
           updateTask=()=>{
              JSON.parse(localStorage.getItem("list"));
             let target = list[values.index]
             let name= document.querySelector('#subjectName').value
             let description= document.querySelector('#taskDescription').value
             let status= document.querySelector('#TaskStatus').value
-          // target.name
+        
           target.name = name;
           target.description= description;
           target.status=status;
@@ -207,6 +204,22 @@ DeleteFirstTask= () => {
   console.log("removed first item");
   display();
 };
+
+
+// delete all
+
+RemoveAll=()=>{
+  let RetrievedTaskArray = JSON.parse(localStorage.getItem("list"));
+
+  for (let i = 0; i <= RetrievedTaskArray.length; i++) {
+RetrievedTaskArray.pop()
+let clear =RetrievedTaskArray
+localStorage.setItem("list", JSON.stringify(clear));
+console.log(clear);
+window.location.reload();
+    }
+
+}
 
 // addToTasks = () => {
 //   let TaskStatus = document.querySelector("#TaskStatus").value;
