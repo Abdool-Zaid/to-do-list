@@ -89,7 +89,7 @@ display();
 searchTasks = () => {
   let FindTask = document.querySelector("#SecondR").value.toLowerCase();
   let SearchResult = list.find((list) => list.name === FindTask);
-  console.log(SearchResult);
+
   document.querySelector("#target").innerHTML = "";
   document.querySelector("#target").innerHTML = `
   <div class="searchItem" >
@@ -106,11 +106,48 @@ searchTasks = () => {
           </div>
 
           `;
-};
+  
+        sessionStorage.setItem('itemToBeEdited', JSON.stringify({'index':SearchResult.id-1,'name':SearchResult.name, 'description':SearchResult.description}));
+        };
+        
+        // update
+        editItem=()=>{
+          let values= JSON.parse(sessionStorage.getItem('itemToBeEdited'))
+          console.log(values.index)
+          console.log(values.name)
+          console.log(values.description)
+          console.log('editted')
+          // 1 change innerhtml to update form
+          document.querySelector(".searchItem").innerHTML = "";
+          document.querySelector(".searchItem").innerHTML = `
+          <div id="editItem">
+          <form onsubmit="event.preventDefault()">
+            <input type="text" id="subjectName" value="${values.name}" />
+            <input type="text" id="taskDescription" value="${values.description}"/>
+            <select name="status" id="TaskStatus">
+              <option value="need to do">need to do</option>
+              <option value="in progress">in progress</option>
+              <option value="completed">completed</option>
+            </select>
+            <button onclick="updateTask()">Update</button>
+          </form>
+        </div>
+                  `;
+  // 3 set array object as new data
+  updateTask=()=>{
+    JSON.parse(localStorage.getItem("list"));
+   let target = list [values.index]
+   let name= document.querySelector('#subjectName').value
+   let description= document.querySelector('#taskDescription').value
+   let status= document.querySelector('#taskStatus').value
+    console.log('updated')
+  }
+ 
+  // 4 rerun search to show changes
+  
+  
 
-// update
-editItem=()=>{
-console.log('edit')
+  
 }
 
 
@@ -147,7 +184,7 @@ deleteOne=()=>{
   console.log(list);
 
   document.querySelector("#target").innerHTML = "";
-  console.log("removed last item");
+  console.log("removed one item");
   display();
 }
 
@@ -163,7 +200,7 @@ DeleteFirstTask= () => {
   console.log(list);
 
   document.querySelector("#target").innerHTML = "";
-  console.log("removed last item");
+  console.log("removed first item");
   display();
 };
 
