@@ -1,5 +1,5 @@
 console.log("active");
-// create
+
 const list = JSON.parse(localStorage.getItem("list"))
   ? JSON.parse(localStorage.getItem("list"))
   : [
@@ -85,7 +85,7 @@ display = () => {
 };
 display();
 
-// read one
+
 searchTasks = () => {
   let FindTask = document.querySelector("#SecondR").value.toLowerCase();
   let SearchResult = list.find((list) => list.name === FindTask);
@@ -118,7 +118,7 @@ console.log('edit')
 // update all
 // remove completed list
 
-// delete last
+
 RemoveFinal = () => {
   JSON.parse(localStorage.getItem("list"));
   console.log(list);
@@ -133,8 +133,9 @@ RemoveFinal = () => {
   console.log("removed last item");
   display();
 };
-// delete
-// deleted all selected(sorted)
+
+
+
 deleteOne=()=>{
   JSON.parse(localStorage.getItem("list"));
   console.log(list);
@@ -149,7 +150,7 @@ deleteOne=()=>{
   console.log("removed last item");
   display();
 }
-delete first
+
 
 DeleteFirstTask= () => {
   JSON.parse(localStorage.getItem("list"));
