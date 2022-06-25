@@ -2,7 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'myFont';
+    font-size: 35px;
   }
+
+  @font-face {
+    font-family: myFont;
+    src: url(./assets/BaeFont-Regular.ttf);
+}
   :root {
     --ss: 1%;
     --st: 1em;
@@ -11,7 +18,7 @@
     --bg: #baca43;
     --sixty: #444a3f;
     --thirty: #8a7541;
-    --ten: #6fffff;
+    --ten: #56c4c4;
   }
   body {
     background-color: var(--sixty);
@@ -49,4 +56,14 @@
   }
   input:checked + label {
     text-decoration: line-through;
+  }
+
+  form{
+    margin: var(--ss);
+  }
+  button{
+    margin: var(--ss);
+    width: max-content;
+    padding: var(--st);
+    background-color: var(--ten);
   }
